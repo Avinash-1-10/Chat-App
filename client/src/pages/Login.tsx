@@ -56,163 +56,169 @@ const Login = () => {
     console.log(registerFormData);
   };
   return (
-    <Container
-      component={"main"}
-      maxWidth={"xs"}
-      sx={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Paper
-        elevation={3}
+    <div
+    style={{
+      background: "linear-gradient(120deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)",
+    }}
+  >
+      <Container
+        component={"main"}
+        maxWidth={"xs"}
         sx={{
-          p: 4,
+          height: "100vh",
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
-        {isLogin ? (
-          <div>
-            <Typography variant="h5" textAlign={"center"} fontWeight={"bold"}>
-              Login
-            </Typography>
-            <form style={{ width: "100%" }} onSubmit={handleLogin}>
-              <TextField
-                required
-                fullWidth
-                name="username"
-                label="Username"
-                margin="normal"
-                variant="outlined"
-                value={loginFormData.username}
-                onChange={handleLoginData}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Password"
-                name="password"
-                type="password"
-                margin="normal"
-                variant="outlined"
-                value={loginFormData.password}
-                onChange={handleLoginData}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                sx={{ mt: 2 }}
-              >
+        <Paper
+          elevation={3}
+          sx={{
+            p: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {isLogin ? (
+            <div>
+              <Typography variant="h5" textAlign={"center"} fontWeight={"bold"}>
                 Login
-              </Button>
-              <Typography sx={{ mt: 2, textAlign: "center" }}>OR</Typography>
-              <Button variant="text" fullWidth onClick={toggleLogin}>
-                Register
-              </Button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <Typography variant="h5" textAlign={"center"} fontWeight={"bold"}>
-              Register
-            </Typography>
-            <form style={{ width: "100%" }} onSubmit={handleRegister}>
-              <Stack
-                position="relative"
-                margin="auto"
-                alignItems="center"
-                justifyContent="center"
-                width="100px"
-                height="100px"
-              >
-                <Avatar
-                  sx={{ width: 100, height: 100, objectFit: "contain" }}
-                  src={
-                    registerFormData.avatar
-                      ? URL.createObjectURL(registerFormData.avatar)
-                      : ""
-                  }
+              </Typography>
+              <form style={{ width: "100%" }} onSubmit={handleLogin}>
+                <TextField
+                  required
+                  fullWidth
+                  name="username"
+                  label="Username"
+                  margin="normal"
+                  variant="outlined"
+                  value={loginFormData.username}
+                  onChange={handleLoginData}
                 />
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    bottom: 33,
-                    right: 33,
-                    color: "white",
-                    bgcolor: "rgba(0,0,0,0.5)",
-                    ":hover": { bgcolor: "rgba(0,0,0,0.7)" },
-                    padding: "5px",
-                    borderRadius: "50%",
-                  }}
-                  component={"label"}
+                <TextField
+                  required
+                  fullWidth
+                  label="Password"
+                  name="password"
+                  type="password"
+                  margin="normal"
+                  variant="outlined"
+                  value={loginFormData.password}
+                  onChange={handleLoginData}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 2 }}
                 >
-                  <CameraAlt />
-                  <VisuallyHiddenInput type="file" onChange={handleAvatar} />
-                </IconButton>
-              </Stack>
-              <TextField
-                required
-                fullWidth
-                label="Name"
-                name="name"
-                margin="normal"
-                variant="outlined"
-                value={registerFormData.name}
-                onChange={handleRegisterData}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Bio"
-                name="bio"
-                margin="normal"
-                variant="outlined"
-                value={registerFormData.bio}
-                onChange={handleRegisterData}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Username"
-                name="username"
-                margin="normal"
-                variant="outlined"
-                value={registerFormData.username}
-                onChange={handleRegisterData}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Password"
-                name="password"
-                type="password"
-                margin="normal"
-                variant="outlined"
-                value={registerFormData.password}
-                onChange={handleRegisterData}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                sx={{ mt: 2 }}
-              >
+                  Login
+                </Button>
+                <Typography sx={{ mt: 2, textAlign: "center" }}>OR</Typography>
+                <Button variant="text" fullWidth onClick={toggleLogin}>
+                  Register
+                </Button>
+              </form>
+            </div>
+          ) : (
+            <div>
+              <Typography variant="h5" textAlign={"center"} fontWeight={"bold"}>
                 Register
-              </Button>
-              <Typography sx={{ mt: 2, textAlign: "center" }}>OR</Typography>
-              <Button variant="text" fullWidth onClick={toggleLogin}>
-                Login
-              </Button>
-            </form>
-          </div>
-        )}
-      </Paper>
-    </Container>
+              </Typography>
+              <form style={{ width: "100%" }} onSubmit={handleRegister}>
+                <Stack
+                  position="relative"
+                  margin="auto"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100px"
+                  height="100px"
+                >
+                  <Avatar
+                    sx={{ width: 100, height: 100, objectFit: "contain" }}
+                    src={
+                      registerFormData.avatar
+                        ? URL.createObjectURL(registerFormData.avatar)
+                        : ""
+                    }
+                  />
+                  <IconButton
+                    sx={{
+                      position: "absolute",
+                      bottom: 33,
+                      right: 33,
+                      color: "white",
+                      bgcolor: "rgba(0,0,0,0.5)",
+                      ":hover": { bgcolor: "rgba(0,0,0,0.7)" },
+                      padding: "5px",
+                      borderRadius: "50%",
+                    }}
+                    component={"label"}
+                  >
+                    <CameraAlt />
+                    <VisuallyHiddenInput type="file" onChange={handleAvatar} />
+                  </IconButton>
+                </Stack>
+                <TextField
+                  required
+                  fullWidth
+                  label="Name"
+                  name="name"
+                  margin="normal"
+                  variant="outlined"
+                  value={registerFormData.name}
+                  onChange={handleRegisterData}
+                />
+                <TextField
+                  required
+                  fullWidth
+                  label="Bio"
+                  name="bio"
+                  margin="normal"
+                  variant="outlined"
+                  value={registerFormData.bio}
+                  onChange={handleRegisterData}
+                />
+                <TextField
+                  required
+                  fullWidth
+                  label="Username"
+                  name="username"
+                  margin="normal"
+                  variant="outlined"
+                  value={registerFormData.username}
+                  onChange={handleRegisterData}
+                />
+                <TextField
+                  required
+                  fullWidth
+                  label="Password"
+                  name="password"
+                  type="password"
+                  margin="normal"
+                  variant="outlined"
+                  value={registerFormData.password}
+                  onChange={handleRegisterData}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                >
+                  Register
+                </Button>
+                <Typography sx={{ mt: 2, textAlign: "center" }}>OR</Typography>
+                <Button variant="text" fullWidth onClick={toggleLogin}>
+                  Login
+                </Button>
+              </form>
+            </div>
+          )}
+        </Paper>
+      </Container>
+    </div>
   );
 };
 

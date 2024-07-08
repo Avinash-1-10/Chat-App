@@ -1,19 +1,29 @@
-import { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProtectRoute from "./components/auth/ProtectRoute";
+
 const Home = lazy(() => import("./pages/Home"));
 const Chat = lazy(() => import("./pages/Chat"));
 const Groups = lazy(() => import("./pages/Groups"));
 const Login = lazy(() => import("./pages/Login"));
+const NotFound = lazy(() => import("./components/NotFound"));
 
-const App = () => {
+const App: React.FC = () => {
+  const user = false;
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/chat/:chatId" element={<Chat />} />
-        <Route path="/groups" element={<Groups />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route element={<ProtectRoute user={user} />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/chat/:chatId" element={<Chat />} />
+            <Route path="/groups" element={<Groups />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };
