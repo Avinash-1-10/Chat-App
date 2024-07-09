@@ -1,12 +1,14 @@
 import React from "react";
 import Title from "../shared/Title";
 import { Grid } from "@mui/material";
+import Header from "../shared/Header";
 
 const AppLayout = () => (WrappedComponent: React.FC) => {
   return (props: object) => {
     return (
       <div>
         <Title />
+        <Header/>
         <Grid container height={"calc(100vh - 4rem)"}>
           <Grid
             item
