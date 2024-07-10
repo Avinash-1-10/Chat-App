@@ -1,1 +1,1 @@
-export const orange:string = "#fca311";
+export const orange:string = "#128C7E";

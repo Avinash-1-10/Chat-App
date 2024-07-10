@@ -10,7 +10,7 @@ interface IconBtnProps {
 const IconBtn: React.FC<IconBtnProps> = ({ title, icon: Icon, onClick }) => {
   return (
     <Tooltip title={title}>
-      <IconButton color="inherit" size="large" onClick={onClick}>
+      <IconButton sx={{ color: "white" }} size="large" onClick={onClick}>
         <Icon />
       </IconButton>
     </Tooltip>
