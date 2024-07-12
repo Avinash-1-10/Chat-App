@@ -1,5 +1,5 @@
-import { Box, IconButton, Toolbar, Typography } from "@mui/material";
-import { orange } from "../../constants/colors";
+import { Backdrop, Box, IconButton, Toolbar, Typography } from '@mui/material';
+import { orange } from '../../constants/colors';
 import {
   Menu as MenuIcon,
   Add as AddIcon,
@@ -7,12 +7,12 @@ import {
   Logout as LogoutIcon,
   Search as SearchIcon,
   Notifications,
-} from "@mui/icons-material";
-import IconBtn from "./IconButton";
-import { lazy, Suspense, useState } from "react";
-const SearchDialog = lazy(() => import("../specific/Search"));
-const NotifiationDialog = lazy(() => import("../specific/Notifications"));
-const NewGroupDialog = lazy(() => import("../specific/NewGroup"));
+} from '@mui/icons-material';
+import IconBtn from './IconButton';
+import { lazy, Suspense, useState } from 'react';
+const SearchDialog = lazy(() => import('../specific/Search'));
+const NotifiationDialog = lazy(() => import('../specific/Notifications'));
+const NewGroupDialog = lazy(() => import('../specific/NewGroup'));
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -39,52 +39,52 @@ const Header = () => {
     <>
       <Box
         sx={{ flexGrow: 1 }}
-        height={"4rem"}
-        position={"static"}
+        height={'4rem'}
+        position={'static'}
         bgcolor={orange}
       >
         <Toolbar>
           <Typography
-            variant="h6"
+            variant='h6'
             sx={{
-              display: { xs: "none", sm: "block", color: "white" },
+              display: { xs: 'none', sm: 'block', color: 'white' },
             }}
           >
             ChatMe
           </Typography>
           <Box
             sx={{
-              display: { xs: "block", sm: "none" },
+              display: { xs: 'block', sm: 'none' },
             }}
           >
-            <IconButton color="inherit" onClick={handleMobile}>
+            <IconButton color='inherit' onClick={handleMobile}>
               <MenuIcon />
             </IconButton>
           </Box>
           <Box flexGrow={1} />
           <Box>
             <IconBtn
-              title={"Search"}
+              title={'Search'}
               icon={SearchIcon}
               onClick={openSearchDialog}
             />
             <IconBtn
-              title={"New Group"}
+              title={'New Group'}
               icon={AddIcon}
               onClick={openNewGroup}
             />
             <IconBtn
-              title={"Notifications"}
+              title={'Notifications'}
               icon={Notifications}
               onClick={openNotification}
             />
             <IconBtn
-              title={"Manage Group"}
+              title={'Manage Group'}
               icon={GroupIcon}
               onClick={navigateToGroup}
             />
             <IconBtn
-              title={"Logout"}
+              title={'Logout'}
               icon={LogoutIcon}
               onClick={handleLogout}
             />
@@ -92,26 +92,22 @@ const Header = () => {
         </Toolbar>
       </Box>
       {isSearch && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Backdrop open />}>
           <SearchDialog />
         </Suspense>
       )}
 
-      {
-        isNewGroup && (
-          <Suspense fallback={<div>Loading...</div>}>
-            <NewGroupDialog />
-          </Suspense>
-        )
-      }
+      {isNewGroup && (
+        <Suspense fallback={<Backdrop open />}>
+          <NewGroupDialog />
+        </Suspense>
+      )}
 
-      {
-        isNotification && (
-          <Suspense fallback={<div>Loading...</div>}>
-            <NotifiationDialog />
-          </Suspense>
-        )
-      }
+      {isNotification && (
+        <Suspense fallback={<Backdrop open />}>
+          <NotifiationDialog />
+        </Suspense>
+      )}
     </>
   );
 };
