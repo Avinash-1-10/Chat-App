@@ -2,6 +2,8 @@ import React from "react";
 import Title from "../shared/Title";
 import { Grid } from "@mui/material";
 import Header from "../shared/Header";
+import ChatList from "../specific/ChatList";
+import { sampleChats } from "../../constants/sampleData";
 
 const AppLayout = () => (WrappedComponent: React.FC) => {
   return (props: object) => {
@@ -17,7 +19,7 @@ const AppLayout = () => (WrappedComponent: React.FC) => {
             sx={{ display: { xs: "none", sm: "block" } }}
             height={"100%"}
           >
-            1
+            <ChatList chats={sampleChats}/>
           </Grid>
           <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
             <WrappedComponent {...props} />
